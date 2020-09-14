@@ -14,7 +14,7 @@ This is a normal text.
 
 ### Image
 
-![Cute Succulent](/Images/Succulent.png)
+![Cute Succulent](/Images/Succulent.PNG)
 
 ### Link
 
