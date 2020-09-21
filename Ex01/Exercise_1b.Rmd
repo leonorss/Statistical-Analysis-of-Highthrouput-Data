@@ -1,0 +1,40 @@
+---
+title: "Exercise_1b"
+output: html_document
+---
+
+## Initialization
+
+The code underneath initializes the necessary libraries for the subsequent code. I used the libraries ggplot2 and dplyr for the exercise.
+
+```{r libraries}
+library(ggplot2)
+library(dplyr)
+```
+
+## Sampling
+
+The next part of the code, generates the 100 samples from a log-normal distribution with mu=10 and sigma=3.
+
+
+```{r sampling}
+samples <- rlnorm(100, meanlog = 10, sdlog = 3) %>% data.frame(x=.)
+```
+
+## Plots
+
+The next part of the code creates a histogram of the distribution, as well as a histogram of the distribution on a log scale.
+
+```{r histogram}
+histogram <- ggplot(data=samples, aes(x=x))
+histogram + geom_histogram(bins=20, fill="#66CC99") + xlab("x (samples)") + ggtitle("Histogram of log-normal Distribution") + theme(plot.title = element_text(face="bold", size=15, hjust=0.5))
+
+```
+
+And underneath is the code for the distribution on a log scale.
+
+```{r log_histogram}
+log_histogram <- ggplot(data=samples, aes(x=x))
+log_histogram + scale_x_continuous(trans="log10") + geom_histogram(bins=20, fill="#66CC99") + xlab("x (samples on log scale)") + ggtitle("Histogram of log-normal Distribution on Log Scale") + theme(plot.title = element_text(face="bold", size=15, hjust=0.5))
+
+```
